@@ -18,6 +18,11 @@ require_once "./inc/session_start.php"
 
     // Si el valor de $_GET['vista'] coincide con algún archivo que no sea login o 404 accedemos a la vista
     if (is_file("./vistas/" . $_GET['vista'] . ".php") && $_GET['vista'] != 'login' && $_GET['vista'] != '404') {
+        // Cerrar sesión forzadamente
+        if ((!isset($_SESSION['id']) || ($_SESSION['id'] == "")) || (!isset($_SESSION['usuario']) || ($_SESSION['usuario'] == ""))) {
+            include("./vistas/logout.php");
+            exit();
+        }
         require_once "./inc/navbar.php";
         require_once "./vistas/" . $_GET['vista'] . ".php";
         require_once "./inc/script.php";
