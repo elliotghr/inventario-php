@@ -78,8 +78,8 @@
                     <a class="button is-primary is-rounded">
                         Mi cuenta
                     </a>
-                    <a class="button is-light is-rounded">
-                        Log in
+                    <a href="index.php?vista=logout" class="button is-light is-rounded">
+                        Salir
                     </a>
                 </div>
             </div>
