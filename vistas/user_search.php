@@ -13,6 +13,7 @@
 
     if (!isset($_SESSION['busqueda_usuario']) && empty($_SESSION['busqueda_usuario'])) {
     ?>
+    <!-- Formulario de busqueda -->
         <div class="columns">
             <div class="column">
                 <form action="" method="POST" autocomplete="off">

@@ -3,30 +3,28 @@
     <h2 class="subtitle">Lista de usuarios</h2>
 </div>
 
-<div class="container pb-6 pt-6">  
+<div class="container pb-6 pt-6">
     <?php
-        require_once "./php/main.php";
-
-        # Eliminar usuario #
-        if(isset($_GET['user_id_del'])){
-            require_once "./php/usuario_eliminar.php";
+    include "./php/main.php";
+    // Comprobaciones de paginación
+    if (!isset($_GET['page'])) {
+        $pagina = 1;
+    } else {
+        $pagina = (int)$_GET['page'];
+        if ($pagina <= 1) {
+            $pagina = 1;
         }
+    }
+    $pagina = limpiar_cadena($pagina);
+    // url a modificar en cada cambio de pagina
+    $url = "index.php?vista=user_list&page=";
+    // Variable limit
+    $registros = 15;
+    // Variable para la busqueda de registros
+    $busqueda = "";
 
-        if(!isset($_GET['page'])){
-            $pagina=1;
-        }else{
-            $pagina=(int) $_GET['page'];
-            if($pagina<=1){
-                $pagina=1;
-            }
-        }
-
-        $pagina=limpiar_cadena($pagina);
-        $url="index.php?vista=user_list&page=";
-        $registros=15;
-        $busqueda="";
-
-        # Paginador usuario #
-        // require_once "./php/usuario_lista.php";
+    // Table
+    include "./php/usuario_lista.php";
     ?>
+
 </div>
