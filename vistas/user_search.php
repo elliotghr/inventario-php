@@ -5,15 +5,20 @@
 
 <div class="container pb-6 pt-6">
     <?php
+    // Incluimos nuestras funciones
     require_once "./php/main.php";
 
+    // Cuando se envíe una busqueda ejecutamos el siguiente código
+    // Hacemos la busqueda con el name 'modulo_buscador' ya que nuestro archivo buscador.php es
+    // un buscador general, en este caso estamos buscando a los usuarios
     if (isset($_POST['modulo_buscador'])) {
         require_once "./php/buscador.php";
     }
-
+    // generaremos la busqueda con una variable de sesión
+    // Si no hay busqueda aún entonces generamos solo el input, si no, generamos la última busqueda con sus resultados
     if (!isset($_SESSION['busqueda_usuario']) && empty($_SESSION['busqueda_usuario'])) {
     ?>
-    <!-- Formulario de busqueda -->
+        <!-- Formulario de busqueda -->
         <div class="columns">
             <div class="column">
                 <form action="" method="POST" autocomplete="off">
@@ -46,7 +51,7 @@
         if (isset($_GET['user_id_del'])) {
             require_once "./php/usuario_eliminar.php";
         }
-
+        // Traemos el mismo código del user_list.php
         if (!isset($_GET['page'])) {
             $pagina = 1;
         } else {

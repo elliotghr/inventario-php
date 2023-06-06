@@ -6,6 +6,10 @@
 <div class="container pb-6 pt-6">
     <?php
     include "./php/main.php";
+    //Eliminar usuario
+    if (isset($_GET['user_id_del'])) {
+        require_once "./php/usuario_eliminar.php";
+    }
     // Comprobaciones de paginación
     if (!isset($_GET['page'])) {
         $pagina = 1;
@@ -23,7 +27,7 @@
     // Variable para la busqueda de registros
     $busqueda = "";
 
-    // Table
+    // Archivo php que genera mi tabla
     include "./php/usuario_lista.php";
     ?>
 
