@@ -1,30 +1,36 @@
 <?php
+// Traemos nuestras funciones generales
 require_once "./php/main.php";
 
+// Si user_id_up trae el id...
 $id = (isset($_GET['user_id_up'])) ? $_GET['user_id_up'] : 0;
+// Sanitizamos la cadena
 $id = limpiar_cadena($id);
 ?>
 <div class="container is-fluid mb-6">
-    <!-- <?php if ($id == $_SESSION['id']) { ?>
+    <!-- Si es el update del mismo usuario... -->
+    <?php if ($id == $_SESSION['id']) { ?>
         <h1 class="title">Mi cuenta</h1>
         <h2 class="subtitle">Actualizar datos de cuenta</h2>
+        <!-- Si es el update de otro usuario -->
     <?php } else { ?>
         <h1 class="title">Usuarios</h1>
         <h2 class="subtitle">Actualizar usuario</h2>
-    <?php } ?> -->
+    <?php } ?>
 </div>
 
 <div class="container pb-6 pt-6">
     <?php
+    // Botón con JS usando el history y el método back();
+    include "./inc/btn_back.php";
 
-    // include "./inc/btn_back.php";
-
-    /*== Verificando usuario ==*/
+    /*== Verificando la existencia del usuario ==*/
     $check_usuario = conexion();
-    $check_usuario = $check_usuario->query("SELECT * FROM usuario WHERE usuario_id='$id'");
-
+    $check_usuario = $check_usuario->query("SELECT * FROM usuarios WHERE usuario_id='$id'");
+    // Si existe el usuario generamos el form
     if ($check_usuario->rowCount() > 0) {
-        $datos = $check_usuario->fetch();
+        // Traemos los datos en nuestra variable $datos
+        $datos = $check_usuario->fetch(PDO::FETCH_ASSOC);
     ?>
 
         <div class="form-rest mb-6 mt-6"></div>
@@ -37,13 +43,13 @@ $id = limpiar_cadena($id);
                 <div class="column">
                     <div class="control">
                         <label>Nombres</label>
-                        <input class="input" type="text" name="usuario_nombre" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,40}" maxlength="40" required value="<?php echo $datos['usuario_nombre']; ?>">
+                        <input class="input" type="text" name="usuario_nombre" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,40}" maxlength="40" required value="<?php echo $datos['nombre']; ?>">
                     </div>
                 </div>
                 <div class="column">
                     <div class="control">
                         <label>Apellidos</label>
-                        <input class="input" type="text" name="usuario_apellido" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,40}" maxlength="40" required value="<?php echo $datos['usuario_apellido']; ?>">
+                        <input class="input" type="text" name="usuario_apellido" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,40}" maxlength="40" required value="<?php echo $datos['apellido']; ?>">
                     </div>
                 </div>
             </div>
@@ -51,13 +57,13 @@ $id = limpiar_cadena($id);
                 <div class="column">
                     <div class="control">
                         <label>Usuario</label>
-                        <input class="input" type="text" name="usuario_usuario" pattern="[a-zA-Z0-9]{4,20}" maxlength="20" required value="<?php echo $datos['usuario_usuario']; ?>">
+                        <input class="input" type="text" name="usuario_usuario" pattern="[a-zA-Z0-9]{4,20}" maxlength="20" required value="<?php echo $datos['usuario']; ?>">
                     </div>
                 </div>
                 <div class="column">
                     <div class="control">
                         <label>Email</label>
-                        <input class="input" type="email" name="usuario_email" maxlength="70" value="<?php echo $datos['usuario_email']; ?>">
+                        <input class="input" type="email" name="usuario_email" maxlength="70" value="<?php echo $datos['email']; ?>">
                     </div>
                 </div>
             </div>
@@ -104,8 +110,10 @@ $id = limpiar_cadena($id);
         </form>
     <?php
     } else {
-        // include "./inc/error_alert.php";
+        // Si no existe generamos una alerta de error
+        include "./inc/error_alert.php";
     }
+    // Cerramos la conexión
     $check_usuario = null;
     ?>
 </div>
