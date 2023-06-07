@@ -53,16 +53,16 @@
                 </a>
 
                 <div class="navbar-dropdown">
-                    <a class="navbar-item">
+                    <a href="index.php?vista=product_new" class="navbar-item">
                         Nuevo
                     </a>
-                    <a class="navbar-item">
+                    <a href="index.php?vista=product_list" class="navbar-item">
                         Lista
                     </a>
-                    <a class="navbar-item">
+                    <a href="index.php?vista=product_category" class="navbar-item">
                         Por categorias
                     </a>
-                    <a class="navbar-item">
+                    <a href="index.php?vista=product_search" class="navbar-item">
                         Buscar
                     </a>
                 </div>
