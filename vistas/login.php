@@ -1,7 +1,7 @@
 <div class="main-container">
 	<!-- Dejamos el action vacio para que el form se envíe al mismo archivo -->
 	<form class="box login" id="ajax" action="" method="POST" autocomplete="off">
-		<h5 class="title is-5 has-text-centered is-uppercase">Sistema de inventario</h5>
+		<h5 class="title is-5 has-text-centered is-uppercase">Abarrotes S.A de C.V.</h5>
 
 		<div class="field">
 			<label class="label">Usuario</label>

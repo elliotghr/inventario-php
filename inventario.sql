@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `inventario`
 --
+CREATE DATABASE IF NOT EXISTS inventario;
+USE inventario;
 
 -- --------------------------------------------------------
 
@@ -89,9 +91,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`usuario_id`, `nombre`, `apellido`, `usuario`, `password`, `email`) VALUES
-(4, 'Kikisito', 'Bon', 'kikisito', '$2y$10$6nGnuOh1K.urOR1jk.Kxz.TcIj2CRWLx843Qy1e65h4mYcXBdHjlG', 'kikisito@pet.com'),
-(5, 'Elliot César', 'Gandarilla', 'elliot', '$2y$10$V0FgM3/QzuwUkAve/ulY2.MD80wkKhHKw48zBz39a6auVfQi9D2iy', 'elliot@gmail.com'),
-(6, 'nano', 'banano', 'nano', '$2y$10$CMSiScvvFSoMm2449031nuR2fC.6MwdRJAn85C.BsC.k1os1DD4oe', 'nano@pet.com'),
+(4, 'test', 'test', 'test', '$2y$10$ngJgrUMNolV.1d9S.bSnf.A80CZIhV4puw25xckD3qXW15sQjjkC6', 'kikisito@pet.com'),
 (9, 'Beatriz', 'Perez', 'betty', '$2y$10$YCPqE8496ZQmhiMeV0DDP.plRzXEIJLJu42MRNfSlku.5o784aZXC', 'mareli2618@hotmail.com');
 
 --
